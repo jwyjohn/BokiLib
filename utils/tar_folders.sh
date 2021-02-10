@@ -1,9 +1,9 @@
 #!/bin/bash  
 export LANG=C.UTF-8
-TMPDIR=../tmp
+TMPDIR=./tmp
 
 for i in `ls $TMPDIR`;  
 do   
 	echo Taring: $i ...;  
-	#tar -czvf "TMPDIR/$i" "./$i.tar.gz"
+	tar -czvf "./tmp/$i.tar.gz" "./tmp/$i" && rm -rf "./tmp/$i" 
 done   
