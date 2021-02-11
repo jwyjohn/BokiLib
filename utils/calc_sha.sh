@@ -11,4 +11,4 @@ do
 	#echo SHA256ing: $i ...;  
 	echo `sha1sum $i` `wc -c $i|cut -f1 -d" "` >> sha_result.txt &
 done   
-
+wait

@@ -1,6 +1,7 @@
 # Doujin Folders
 data/
 tmp/
+sha_result.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

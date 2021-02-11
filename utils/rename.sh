@@ -6,6 +6,6 @@ TMPDIR=./tmp
 
 for i in `ls $TMPDIR/*.tar.gz`;  
 do   
-	echo "$i" $TMPDIR/`sha1sum $i|cut -f1 -d" "` 
+	mv -v  "$i" $TMPDIR/`sha1sum $i|cut -f1 -d" "` 
 done   
 
