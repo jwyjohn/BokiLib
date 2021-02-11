@@ -1,4 +1,4 @@
-FROM python:3.7-alpine3.9
+FROM python:3.9-alpine
 LABEL  MAINTAINER="jwyjohn <jwyjohn@foxmail.com>"
 
 ENV LIBRARY_PATH /lib:/usr/lib
