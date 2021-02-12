@@ -4,7 +4,7 @@ export LANG=C.UTF-8
 export DOUJIN_DIR=$PWD
 
 #mkdir $DOUJIN_DIR/tmp/doujin{00001..99999}
-for i in {00000..99999};
+for i in {0000..9999};
 do
         mkdir -v "./tmp/doujin$i"
 done
