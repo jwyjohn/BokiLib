@@ -1,7 +1,10 @@
 # -*- encoding: utf-8 -*-
 
+import sqlite3
 from flask import Flask
 import flask_restful as restful
+
+DATABASE = ''
 
 app = Flask(__name__)
 api = restful.Api(app)
