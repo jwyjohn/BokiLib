@@ -1,0 +1,45 @@
+# -*- encoding: utf-8 -*-
+
+from flask import Flask
+import flask_restful as restful
+from flask_sqlalchemy import SQLAlchemy
+import hashlib
+
+
+
+
+app = Flask(__name__)
+api = restful.Api(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////data/test.db'
+db = SQLAlchemy(app)
+
+class Doujin(db.Model):
+    sha1 = db.Column(db.String(40), primary_key=True)
+    raw = db.Column(db.LargeBinary))
+    def __init__(self, raw):
+        self.sha1 = hashlib.sha1(raw)
+        self.raw = raw
+
+    def __repr__(self):
+        return self.raw
+
+db.create_all() #For the first run.
+
+
+
+
+
+
+
+
+
+
+class HelloWorld(restful.Resource):
+    def get(self):
+        #return {'hello': 'world'}
+        return str(User.query.all())
+
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
