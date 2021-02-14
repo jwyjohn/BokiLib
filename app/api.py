@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from flask import Flask, Response, send_file
+from flask import Flask, Response, send_file, request
 from flask_restful import reqparse, Resource, Api
 import flask_restful as restful
 import hashlib
