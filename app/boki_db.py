@@ -108,4 +108,4 @@ class BokiFileDB():
                     return 'Invalid Size'
             return fsha1
         except:
-            return 'Invalid File'+fsha1
+            return 'Invalid File: '+fsha1

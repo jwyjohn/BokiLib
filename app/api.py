@@ -34,7 +34,9 @@ class GetFile(restful.Resource):
 
 class UploadFile(restful.Resource):
     def post(self):
-        pass
+        args = restful.parser.parse_args()
+        print(args)
+        return 201
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
