@@ -2,5 +2,4 @@ flask
 flask-sqlalchemy
 flask-restful
 gunicorn
-gevent
 werkzeug

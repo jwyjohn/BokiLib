@@ -20,4 +20,4 @@ WORKDIR /app
 
 # ENTRYPOINT [ "python", "/app/api.py" ]
 
-ENTRYPOINT [ "gunicorn", "start:app", "-c gunicorn.conf.py" ]
+ENTRYPOINT [ "gunicorn", "api:app", "-c", "/app/gunicorn.conf" ]
