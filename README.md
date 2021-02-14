@@ -6,8 +6,54 @@ Some scripts to help archive some of my doujin.
 2. Build docker image with `docker build -t jwy/bokilib:0.01 .`
 3. Edit `app/gunicorn.conf` as you like.
 4. Run `docker run --rm -p 5000:5000 -v $PWD/app:/app -v $PWD/data:/data jwy/bokilib:0.01`
+5. Run `source client/set_alias.sh` for shell integration of `bokinfo`, `bokiupl` and `bokidl`.
+
 
 # Testing
+
+```shell
+
+[tpe@manjaro-home BokiLib]$ git pull && source client/set_alias.sh
+
+
+[tpe@manjaro-home BokiLib]$ bokiupl README.md
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1541  100    43  100  1498   4300   146k --:--:-- --:--:-- --:--:--  150k
+-bash: [: "71d5b00006f7fd965d00824146057a02373d77b4": integer expression expected
+71d5b00006f7fd965d00824146057a02373d77b4|README.md|1297
+
+
+[tpe@manjaro-home BokiLib]$ bokinfo READ
+{"hash": "READ", "size": "Invalid hash.", "date": "Invalid hash."}
+71d5b00006f7fd965d00824146057a02373d77b4|README.md|1297
+
+
+[tpe@manjaro-home BokiLib]$ bokinfo README
+{"hash": "README", "size": "Invalid hash.", "date": "Invalid hash."}
+71d5b00006f7fd965d00824146057a02373d77b4|README.md|1297
+
+
+[tpe@manjaro-home BokiLib]$ bokinfo 71d5b00006f7fd965d00824146057a02373d77b4
+{"hash": "71d5b00006f7fd965d00824146057a02373d77b4", "size": 1297, "date": 1613303797}
+71d5b00006f7fd965d00824146057a02373d77b4|README.md|1297
+
+
+[tpe@manjaro-home BokiLib]$ bokidl 71d5b00006f7fd965d00824146057a02373d77b4 README.b
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1297    0  1297    0     0   316k      0 --:--:-- --:--:-- --:--:--  316k
+71d5b00006f7fd965d00824146057a02373d77b4|README.b|1297
+71d5b00006f7fd965d00824146057a02373d77b4|README.md|1297
+
+
+[tpe@manjaro-home BokiLib]$ diff README.*
+[tpe@manjaro-home BokiLib]$
+
+
+
+
+```
 
 ```shell
 

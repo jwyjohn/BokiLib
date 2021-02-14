@@ -26,6 +26,7 @@ function bokiupl(){
 
 function bokiquery(){
 	grep $1 $BOKI_DIR/index.list
+
 }
 
 function bokidl(){
