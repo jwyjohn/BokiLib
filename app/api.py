@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from flask import Flask, Response, send_file, request
+from flask import Flask, Response, send_file, request, abort
 from flask_restful import reqparse, Resource, Api
 import flask_restful as restful
 import hashlib
@@ -26,7 +26,8 @@ class GetFile(Resource):
     def get(self, sha1):
         res_file=boki_db.hash2file(sha1)
         if not type(res_file)==type(b'A'):
-            return "No such file.",404
+            #abort(404)
+            return 404
         res_filename=str(int(time.mktime(datetime.datetime.now().timetuple())))
         b = BytesIO(res_file)
         response = Response(b, content_type='application/octet-stream')
@@ -41,7 +42,8 @@ class UploadFile(Resource):
         if check_sha1(add_res):
             return add_res
         else:
-            return "Upload Failed.",404
+            #abort(401)
+            return 404
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
