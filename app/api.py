@@ -35,7 +35,14 @@ class GetFile(Resource):
 
 class UploadFile(Resource):
     def post(self):
-        return str(request.files)
+        file = request.files['file']
+        file_bytes = file.read()
+        try:
+            add_res=boki_db.addfile(file_bytes)
+        if check_sha1(add_res):
+            return add_res
+        else:
+            return "Upload Failed."
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
