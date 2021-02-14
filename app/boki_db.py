@@ -15,7 +15,7 @@ def init_db(DATABASE_PATH='/data'):
 
     if not os.path.exists(DATABASE_PATH+'/filedate.dbm'):
         with dbm.open(DATABASE_PATH+'/filedate.dbm', 'n') as ddb:
-            ddb['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']=int(time.mktime(datetime.datetime.now().timetuple()))
+            ddb['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']=str(int(time.mktime(datetime.datetime.now().timetuple())))
 
     if not os.path.exists(DATABASE_PATH+'/filesize.dbm'):
         with dbm.open(DATABASE_PATH+'/filesize.dbm', 'n') as sdb:
@@ -88,7 +88,7 @@ class BokiFileDB():
         try:
             assert type(rawfile)==type(b'A')
             fsha1=hashlib.sha1(rawfile).hexdigest()
-            ftime=int(time.mktime(datetime.datetime.now().timetuple()))
+            ftime=str(int(time.mktime(datetime.datetime.now().timetuple())))
             fsize=str(len(rawfile))
             with dbm.open(self.__DBPATH+'/rawfile.dbm', 'w') as fdb:
                 try:
