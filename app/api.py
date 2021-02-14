@@ -15,6 +15,8 @@ boki_db=BokiFileDB("../data")
 app = Flask(__name__)
 api = restful.Api(app)
 
+parser = restful.reqparse.RequestParser()
+
 
 class GetFileInfo(restful.Resource):
     def get(self, sha1):
@@ -34,7 +36,7 @@ class GetFile(restful.Resource):
 
 class UploadFile(restful.Resource):
     def post(self):
-        args = restful.parser.parse_args()
+        args = parser.parse_args()
         print(args)
         return 201
 
