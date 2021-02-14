@@ -105,5 +105,6 @@ class BokiFileDB():
                     sdb[fsha1]=fsize
                 except:
                     return 'Invalid Size'
+            return fsha1
         except:
             return 'Invalid File'
