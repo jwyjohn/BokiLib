@@ -18,6 +18,7 @@ function bokiupl(){
 	 -F "file=@$1"\
 	 $BOKI_URL/u
 	echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1`
+	echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1` >> $BOKI_DIR/index.list
 }
 
 function bokiquery(){
