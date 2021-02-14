@@ -37,8 +37,7 @@ class UploadFile(Resource):
     def post(self):
         file = request.files['file']
         file_bytes = file.read()
-        try:
-            add_res=boki_db.addfile(file_bytes)
+        add_res=boki_db.addfile(file_bytes)        
         if check_sha1(add_res):
             return add_res
         else:
