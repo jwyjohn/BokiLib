@@ -9,7 +9,7 @@ import datetime
 
 def init_db(DATABASE_PATH='/data'):
     if not os.path.exists(DATABASE_PATH+'/rawfile.dbm'):
-        with dbm.open('/data/rawfile.dbm', 'n') as db:
+        with dbm.open(DATABASE_PATH+'/rawfile.dbm', 'n') as db:
             db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='Hello World!\n'
 
     if not os.path.exists(DATABASE_PATH+'/filedate.dbm'):
