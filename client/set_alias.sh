@@ -1,10 +1,13 @@
-#!/bin/bash  
+#!/bin/bash
 export LANG=C.UTF-8
-TMPDIR=./tmp
+export BOKI_DIR=~/.boki_client
+export BOKI_URL=http://192.168.1.43:5000
 
-for i in `ls $TMPDIR`;  
-do   
-	echo Taring: $i ...;  
-	tar -czvf "./tmp/$i.tar.gz" "./tmp/$i" && rm -rf "./tmp/$i" &
-done   
-wait
+mkdir -p $BOKI_DIR
+touch $BOKI_DIR/index.list
+
+# index.list: hash|filename
+
+function bokinfo(){
+	curl $BOKI_URL/i/+$1
+}
