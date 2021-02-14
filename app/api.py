@@ -38,7 +38,7 @@ class GetFile(Resource):
 class UploadFile(Resource):
     def post(self):
         args = parser.parse_args()
-        print(args)
+        print(args['file'])
         return 201
 
 
