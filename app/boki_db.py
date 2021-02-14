@@ -89,17 +89,17 @@ class BokiFileDB():
             fsha1=hashlib.sha1(rawfile).hexdigest()
             ftime=str(time.mktime(datetime.datetime.now().timetuple()))
             fsize=str(len(rawfile))
-            with dbm.open(self.__DBPATH+'/rawfile.dbm', 'r') as fdb:
+            with dbm.open(self.__DBPATH+'/rawfile.dbm', 'w') as fdb:
                 try:
                     fdb[fsha1]=rawfile
                 except:
                     return 'Invalid FileDB'
-            with dbm.open(self.__DBPATH+'/filedate.dbm', 'r') as ddb:
+            with dbm.open(self.__DBPATH+'/filedate.dbm', 'w') as ddb:
                 try:
                     ddb[fsha1]=ftime
                 except:
                     return 'Invalid Date'
-            with dbm.open(self.__DBPATH+'/filesize.dbm', 'r') as sdb:
+            with dbm.open(self.__DBPATH+'/filesize.dbm', 'w') as sdb:
                 try:
                     sdb[fsha1]=fsize
                 except:
