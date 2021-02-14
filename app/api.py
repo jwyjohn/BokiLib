@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from flask import Flask, Response, send_file
+
 import flask_restful as restful
 import hashlib
 from io import BytesIO
@@ -36,8 +37,6 @@ class GetFile(restful.Resource):
 
 class UploadFile(restful.Resource):
     def post(self):
-        args = parser.parse_args()
-        print(args)
         return 201
 
 
