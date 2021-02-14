@@ -15,11 +15,12 @@ function bokinfo(){
 }
 
 function bokiupl(){
-	curl -X POST -H "Content-Type: multipart/form-data" -F "file=@$1" $BOKI_URL/u
-	if [ $(echo $?) -eq "0" ];then
+	#curl -X POST -H "Content-Type: multipart/form-data" -F "file=@$1" $BOKI_URL/u
+	if [ $(curl -X POST -H "Content-Type: multipart/form-data" -F "file=@$1" $BOKI_URL/u) -eq "404" ];then
+		echo "Upload Failed."
+	else
 		echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1`
 		echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1` >> $BOKI_DIR/index.list
-	fi
 }
 
 function bokiquery(){
