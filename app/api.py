@@ -16,14 +16,17 @@ app = Flask(__name__)
 api = restful.Api(app)
 
 
-class GetFileTime(restful.Resource):
+class GetFileInfo(restful.Resource):
     def get(self, sha1):
         res=boki_db.hash2date(sha1)
         return {'filedate':res}
 
+
 class GetFile(restful.Resource):
     def get(self, sha1):
         res_file=boki_db.hash2file(sha1)
+        if not type(res_file)==type(b'A'):
+            return "No such file."
         res_filename=str(int(time.mktime(datetime.datetime.now().timetuple())))
         b = BytesIO(res_file)
         response = Response(b, content_type='application/octet-stream')
@@ -32,7 +35,7 @@ class GetFile(restful.Resource):
 
 
 
-api.add_resource(GetFileTime, '/t/<string:sha1>')
+api.add_resource(GetFileInfo, '/i/<string:sha1>')
 api.add_resource(GetFile, '/<string:sha1>')
 
 if __name__ == '__main__':
