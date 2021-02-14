@@ -32,33 +32,6 @@ def check_sha1(s):
     return True
 
 
-
-class GetFileTime(restful.Resource):
-    def get(self, sha1):
-        res=''
-        with dbm.open('/data/filedate.dbm', 'r') as db:
-            try:
-                res=db[sha1].decode(encoding="utf-8", errors="strict")
-            except:
-                return 'No such file.'
-
-        return {'filedate':str(res)}
-
-class GetFile(restful.Resource):
-    def get(self, sha1):
-        res_file=b''
-        res_filename=str(datetime.datetime.now())
-        with dbm.open('/data/rawfile.dbm', 'r') as db:
-            try:
-                res_file=db[sha1]
-            except:
-                return 'No such file.'
-        b = BytesIO(res_file)
-        response = Response(b, content_type='application/octet-stream')
-        response.headers["Content-disposition"] = 'attachment; filename=%s' % res_filename
-        return response
-
-
 class BokiFileDB():
     """
     Database to store file in bokilib.
