@@ -16,7 +16,7 @@ function bokinfo(){
 function bokiupl(){
 	curl -X POST -H "Content-Type: multipart/form-data"\
 	 -F "file=@$1"\
-	 $BOKI_URL/u/
+	 $BOKI_URL/u
 	echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1`
 }
 
