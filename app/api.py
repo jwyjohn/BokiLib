@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from flask import Flask, Response, send_file
-from flask_restful import reqparse
+from flask_restful import reqparse, Resource, Api
 import flask_restful as restful
 import hashlib
 from io import BytesIO
@@ -14,17 +14,17 @@ from boki_db import *
 boki_db=BokiFileDB("../data")
 
 app = Flask(__name__)
-api = restful.Api(app)
+api = Api(app)
 
 parser = reqparse.RequestParser()
 
 
-class GetFileInfo(restful.Resource):
+class GetFileInfo(Resource):
     def get(self, sha1):
         return {'hash':sha1,'size':boki_db.hash2size(sha1),'date':boki_db.hash2date(sha1)}
 
 
-class GetFile(restful.Resource):
+class GetFile(Resource):
     def get(self, sha1):
         res_file=boki_db.hash2file(sha1)
         if not type(res_file)==type(b'A'):
@@ -35,8 +35,10 @@ class GetFile(restful.Resource):
         response.headers["Content-disposition"] = 'attachment; filename=%s' % res_filename
         return response
 
-class UploadFile(restful.Resource):
+class UploadFile(Resource):
     def post(self):
+        args = parser.parse_args()
+        print(args)
         return 201
 
 
