@@ -9,5 +9,5 @@ touch $BOKI_DIR/index.list
 # index.list: hash|filename
 
 function bokinfo(){
-	curl $BOKI_URL/i/+$1
+	curl $BOKI_URL/i/$1
 }
