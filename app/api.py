@@ -32,10 +32,14 @@ class GetFile(restful.Resource):
         response.headers["Content-disposition"] = 'attachment; filename=%s' % res_filename
         return response
 
+class UploadFile(restful.Resource):
+    def post(self):
+        pass
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
 api.add_resource(GetFile, '/<string:sha1>')
+api.add_resource(UploadFile, '/u')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

@@ -81,7 +81,7 @@ class BokiFileDB():
             try:
                 res_size=int(sdb[sha1])
             except:
-                return 'No such file.'
+                return 0
         return res_size
 
     def addfile(self, rawfile):
@@ -90,6 +90,7 @@ class BokiFileDB():
             fsha1=hashlib.sha1(rawfile).hexdigest()
             ftime=str(int(time.mktime(datetime.datetime.now().timetuple())))
             fsize=str(len(rawfile))
+            assert self.hash2size(fsha1)==0
             with dbm.open(self.__DBPATH+'/rawfile.dbm', 'w') as fdb:
                 try:
                     fdb[fsha1]=rawfile
@@ -107,4 +108,4 @@ class BokiFileDB():
                     return 'Invalid Size'
             return fsha1
         except:
-            return 'Invalid File'
+            return 'Invalid File'+fsha1
