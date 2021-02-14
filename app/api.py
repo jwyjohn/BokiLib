@@ -17,7 +17,7 @@ app = Flask(__name__)
 api = Api(app)
 
 parser = reqparse.RequestParser()
-
+parser.add_argument('file')
 
 class GetFileInfo(Resource):
     def get(self, sha1):
