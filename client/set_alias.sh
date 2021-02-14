@@ -26,7 +26,7 @@ function bokiquery(){
 
 function bokidl(){
 	curl $BOKI_URL/$1 -o $2
-	if ["$?" -eq 0];then
+	if [$?==0];then
 		echo `sha1sum $2 | cut -d' ' -f1`\|${2##*/}\|`wc -c $2 | cut -d' ' -f1`
 	fi
 }
