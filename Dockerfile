@@ -5,7 +5,7 @@ ENV LIBRARY_PATH /lib:/usr/lib
 
 
 RUN cat /etc/apk/repositories | sed -e "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/" | tee /etc/apk/repositories && \
-    apk add build-base python3-dev gcc musl-dev zlib-dev 	
+    apk add build-base python3-dev gcc musl-dev zlib-dev
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -18,4 +18,6 @@ RUN cd /app && pip install -i https://mirrors.aliyun.com/pypi/simple/ -r /app/re
 
 WORKDIR /app
 
-ENTRYPOINT [ "python", "/app/api.py" ]
+# ENTRYPOINT [ "python", "/app/api.py" ]
+
+ENTRYPOINT [ "gunicorn", "start:app", "-c gunicorn.conf.py" ]
