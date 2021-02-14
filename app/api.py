@@ -26,7 +26,7 @@ class GetFile(Resource):
     def get(self, sha1):
         res_file=boki_db.hash2file(sha1)
         if not type(res_file)==type(b'A'):
-            return "No such file."
+            return "No such file.",404
         res_filename=str(int(time.mktime(datetime.datetime.now().timetuple())))
         b = BytesIO(res_file)
         response = Response(b, content_type='application/octet-stream')
@@ -37,11 +37,11 @@ class UploadFile(Resource):
     def post(self):
         file = request.files['file']
         file_bytes = file.read()
-        add_res=boki_db.addfile(file_bytes)        
+        add_res=boki_db.addfile(file_bytes)
         if check_sha1(add_res):
             return add_res
         else:
-            return "Upload Failed."
+            return "Upload Failed.",404
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
