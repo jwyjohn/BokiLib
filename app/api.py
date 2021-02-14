@@ -18,8 +18,7 @@ api = restful.Api(app)
 
 class GetFileInfo(restful.Resource):
     def get(self, sha1):
-        res=boki_db.hash2date(sha1)
-        return {'filedate':res}
+        return {'hash':sha1;'size':boki_db.hash2size(sha1);'date':boki_db.hash2date(sha1)}
 
 
 class GetFile(restful.Resource):
