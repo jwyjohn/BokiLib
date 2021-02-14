@@ -13,11 +13,11 @@ def init_db(DATABASE_PATH='/data'):
             db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='Hello World!\n'
 
     if not os.path.exists(DATABASE_PATH+'/filedate.dbm'):
-        with dbm.open('/data/filedate.dbm', 'n') as db:
+        with dbm.open(DATABASE_PATH+'/filedate.dbm', 'n') as db:
             db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']=str(time.mktime(datetime.datetime.now().timetuple()))
 
     if not os.path.exists(DATABASE_PATH+'/filesize.dbm'):
-        with dbm.open('/data/filedate.dbm', 'n') as db:
+        with dbm.open(DATABASE_PATH+'/filedate.dbm', 'n') as db:
             db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='13'
     return 0
 
