@@ -65,7 +65,8 @@ class BokiFileDB():
             return "Invalid hash."
         with dbm.open(self.__DBPATH+'/filedate.dbm', 'r') as ddb:
             try:
-                res_date=int(ddb[sha1])
+                #res_date=int(ddb[sha1])
+                res_date=ddb[sha1]
             except:
                 return 'No such file.'
         return res_date
