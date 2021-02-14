@@ -44,7 +44,7 @@ class GetFileTime(restful.Resource):
 class GetFile(restful.Resource):
     def get(self, sha1):
         res_file=b''
-        res_filename=str(datetime.datetime.now())
+        res_filename=str(time.mktime(datetime.datetime.now().timetuple()))
         with dbm.open('/data/rawfile.dbm', 'r') as db:
             try:
                 res_file=db[sha1]
@@ -52,7 +52,7 @@ class GetFile(restful.Resource):
                 return 'No such file.'
         b = BytesIO(res_file)
         response = Response(b, content_type='application/octet-stream')
-        response.headers["Content-disposition"] = 'attachment; filename=%s' % res_filename  
+        response.headers["Content-disposition"] = 'attachment; filename=%s' % res_filename
         return response
 
 
