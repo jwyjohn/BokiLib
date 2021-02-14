@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from flask import Flask, Response, send_file
-
+from flask_restful import reqparse
 import flask_restful as restful
 import hashlib
 from io import BytesIO
@@ -16,7 +16,7 @@ boki_db=BokiFileDB("../data")
 app = Flask(__name__)
 api = restful.Api(app)
 
-parser = restful.reqparse.RequestParser()
+parser = reqparse.RequestParser()
 
 
 class GetFileInfo(restful.Resource):
