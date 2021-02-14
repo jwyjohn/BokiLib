@@ -16,8 +16,6 @@ boki_db=BokiFileDB("../data")
 app = Flask(__name__)
 api = Api(app)
 
-parser = reqparse.RequestParser()
-parser.add_argument('file')
 
 class GetFileInfo(Resource):
     def get(self, sha1):
@@ -37,9 +35,7 @@ class GetFile(Resource):
 
 class UploadFile(Resource):
     def post(self):
-        args = parser.parse_args()
-        print(args['file'])
-        return args
+        return str(request.files)
 
 
 api.add_resource(GetFileInfo, '/i/<string:sha1>')
