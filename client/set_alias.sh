@@ -21,6 +21,7 @@ function bokiupl(){
 	else
 		echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1`
 		echo `sha1sum $1 | cut -d' ' -f1`\|${1##*/}\|`wc -c $1 | cut -d' ' -f1` >> $BOKI_DIR/index.list
+	fi
 }
 
 function bokiquery(){
