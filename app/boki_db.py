@@ -10,16 +10,16 @@ import time
 
 def init_db(DATABASE_PATH='/data'):
     if not os.path.exists(DATABASE_PATH+'/rawfile.dbm'):
-        with dbm.open(DATABASE_PATH+'/rawfile.dbm', 'n') as db:
-            db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='Hello World!\n'
+        with dbm.open(DATABASE_PATH+'/rawfile.dbm', 'n') as fdb:
+            fdb['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='Hello World!\n'
 
     if not os.path.exists(DATABASE_PATH+'/filedate.dbm'):
-        with dbm.open(DATABASE_PATH+'/filedate.dbm', 'n') as db:
-            db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']=str(time.mktime(datetime.datetime.now().timetuple()))
+        with dbm.open(DATABASE_PATH+'/filedate.dbm', 'n') as ddb:
+            ddb['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']=str(time.mktime(datetime.datetime.now().timetuple()))
 
     if not os.path.exists(DATABASE_PATH+'/filesize.dbm'):
-        with dbm.open(DATABASE_PATH+'/filesize.dbm', 'n') as db:
-            db['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='13'
+        with dbm.open(DATABASE_PATH+'/filesize.dbm', 'n') as sdb:
+            sdb['a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b']='13'
     return 0
 
 hex_nums='0123456789abcdef'
