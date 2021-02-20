@@ -78,3 +78,5 @@ jwyjohn@JwyJohndeAir ~ % curl http://192.168.1.43:5000/f49dd60922a52f0136f60c21a
 jwyjohn@JwyJohndeAir ~ %
 
 ```
+
+testing git conf on apple m1
