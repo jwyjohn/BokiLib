@@ -79,4 +79,3 @@ jwyjohn@JwyJohndeAir ~ %
 
 ```
 
-testing git conf on apple m1
