@@ -79,3 +79,6 @@ jwyjohn@JwyJohndeAir ~ %
 
 ```
 
+
+testing on macbook air m1
+with vscode insider
